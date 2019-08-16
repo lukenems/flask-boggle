@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block game_board %}
+  <div id="game_board" class="container">
+
+    {% for row in board %}
+    <div class='row {{ board.index(row) }}'>
+      {% for letter in row %}
+      <div id='{{ row.index(letter) }}-{{ board.index(row) }}' class="col text-center">{{ letter }}</div>
+
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+
+  <form method="POST">
+      <input type="text" name="guess" value="guess here">
+      <button type="submit" id="guess-btn">Submit</button>
+  </form>
+  {% endblock %}
