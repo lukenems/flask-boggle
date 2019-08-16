@@ -37,11 +37,13 @@ def start_game():
     return render_template('game_board.html', board=board[0])
 
 
-@app.route('/game', methods=['POST'])
+@app.route('/check')
 def check_guess():
     "call check valid function"
 
     word = request.json
+    board = session['board']
+    response = check_valid_word(board, word)
     print("this is our word >>>>>>", word)
 
-    return
+    return jsonify({'result': response})
